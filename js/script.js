@@ -5,6 +5,7 @@
 	// const nodes = document.querySelector(".code--nodes");
 	const globals = document.querySelector(".code--globals");
 	const show = document.querySelector(".show");
+	const notes = document.querySelector("fieldset");
 
 	const globalsEntries = [
 		`# Vanilla`,
@@ -25,33 +26,33 @@ bucket: s3://mybucket`
 	const catalogEntries = [
 		`# Vanilla
 
-data_accounts:
+prm_accounts:
 	type: pandas.CSVDataSet
-	filepath: s3://bucket/data/accounts.csv
+	filepath: s3://bucket/prm/accounts.csv
 	load_args:
 		header: true
 	save_args:
 		index: true
 	
-data_calls:
+prm_calls:
 	type: pandas.CSVDataSet
-	filepath: s3://bucket/data/calls.csv
+	filepath: s3://bucket/prm/calls.csv
 	load_args:
 		header: true
 	save_args:
 		index: true
 
-data_disputes:
+prm_disputes:
 	type: pandas.CSVDataSet
-	filepath: s3://bucket/data/disputes.csv
+	filepath: s3://bucket/prm/disputes.csv
 	load_args:
 		header: true
 	save_args:
 		index: true
 	
-data_users:
+prm_users:
 	type: pandas.CSVDataSet
-	filepath: s3://bucket/data/users.csv
+	filepath: s3://bucket/prm/users.csv
 	load_args:
 		header: true
 	save_args:
@@ -66,27 +67,27 @@ _common_data: &_common_data
 	save_args:
 		index: true
 
-data_accounts:
-	filepath: {{ bucket }}/data/accounts.csv
-	<<: *_common-data
+prm_accounts:
+	filepath: {{ bucket }}/prm/accounts.csv
+	<<: *_common_data
 	
-data_calls:
-	filepath: {{ bucket }}/data/calls.csv
-	<<: *_common-data
+prm_calls:
+	filepath: {{ bucket }}/prm/calls.csv
+	<<: *_common_data
 
-data_disputes:
-	filepath: {{ bucket }}/data/disputes.csv
-	<<: *_common-data
+prm_disputes:
+	filepath: {{ bucket }}/prm/disputes.csv
+	<<: *_common_data
 	
-data_users:
-	filepath: {{ bucket }}/data/users.csv
-	<<: *_common-data`,
+prm_users:
+	filepath: {{ bucket }}/prm/users.csv
+	<<: *_common_data`,
 
 		`# Pattern Matching
 
-data_{type}:
+prm_{placeholder}:
 	type: pandas.CSVDataSet
-	filepath: {bucket}/data/{type}.csv
+	filepath: {bucket}/prm/{placeholder}.csv
 	load_args:
 		header: true
 	save_args:
@@ -102,11 +103,11 @@ model_{name}:
 
 		`# Jinja Templating
 
-{% for type in ['accounts', 'calls', 'disputes', 'users'] %}
+{% for placeholder in ['accounts', 'calls', 'disputes', 'users'] %}
 
-data_{{ type }}:
+prm_{{ placeholder }}:
 	type: pandas.CSVDataSet
-	filepath: {{ bucket }}/data/{{ type }}.csv
+	filepath: {{ bucket }}/data/{{ prm }}.csv
 	load_args:
 		header: true
 	save_args:
@@ -123,16 +124,24 @@ model_input_table:
 		mode: overwrite`
 	];
 
+	const noteEntries = [
+		"",
+		"",
+		"<ul><li>The syntax for this idea is still under development.</li><li>This idea focuses on reducing the complexity of catalog entries.</li><li>This idea assumes that projects adhere to a strict naming convention in their catalogs.</li></ul>",
+		"<ul><li>This idea assumes that projects adhere to a strict naming convention in their catalogs.</li><li>The catalog will be generated at runtime.</li></ul>"
+	];
+
 	function triggerChange() {
 		globals.innerHTML = globalsEntries[slider.value];
 		catalog.innerHTML = catalogEntries[slider.value];
-		// nodes.innerHTML = nodesEntries[slider.value];
+		notes.children[1].innerHTML = noteEntries[slider.value];
 		Prism.highlightAll();
 	}
 
 	slider.addEventListener("input", function(event){
 		triggerChange();
 		show.classList = "show option-" + slider.value;
+		notes.classList = "notes-" + slider.value;
 		event.preventDefault();
 	});
 

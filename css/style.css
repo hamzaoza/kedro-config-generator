@@ -268,7 +268,7 @@ body {
 }
 
 .page {
-  max-width: 80rem;
+  max-width: 90rem;
   margin: 1rem auto;
 }
 
@@ -301,6 +301,33 @@ pre {
   transform-origin: top left;
 }
 
-.option-0 {
+.option-0, .notes-0, .notes-1 {
   opacity: 0.2;
+}
+
+fieldset {
+  background: #081C28;
+  border: 0;
+  border-radius: 0.5em;
+  padding: 2rem;
+  transition: all 0.3s ease-in-out;
+}
+fieldset legend {
+  background: #ffbc00;
+  color: black;
+  text-transform: uppercase;
+  padding: 0.5rem;
+  font-weight: bold;
+  border-radius: 0.25em;
+}
+fieldset p {
+  font-weight: normal;
+  margin: 0;
+}
+fieldset ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+fieldset li {
+  margin-bottom: 0.25rem;
 }

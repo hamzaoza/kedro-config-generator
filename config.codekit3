@@ -93,7 +93,8 @@
 	"displayValue": "Generator",
 	"displayValueWasSetByUser": 0,
 	"iconImageName": "brackets_gray",
-	"iconImageWasSetByUser": 0
+	"iconImageWasSetByUser": 0,
+	"lastBuiltDate": 650486462.07174504
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,

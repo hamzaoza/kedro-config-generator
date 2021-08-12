@@ -28,18 +28,25 @@
 				<p>pipeline.py</p>
 				<pre class="line-numbers"><code class="language-python code--nodes">node(
 	func=combine_users,
-	inputs=["data_accounts", "data_users"],
+	inputs=["prm_accounts", "prm_users"],
 	outputs="combined_users",
 	name="combine_users_node",
 ),
 
 node(
 	func=create_model_input_table,
-	inputs=["combined_users", "data_calls", "data_disputes"],
+	inputs=["combined_users", "prm_calls", "prm_disputes"],
 	outputs="model_input_table",
 	name="create_model_input_table_node",
 )</code></pre>
+
+				<fieldset class="notes-0">
+					<legend>Notes</legend>
+					<div></div>
+				</fieldset>
+
 			</div>
+			
 		</div>
 	</div>
 	
