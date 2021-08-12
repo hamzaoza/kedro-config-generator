@@ -56,7 +56,15 @@ prm_users:
 	load_args:
 		header: true
 	save_args:
-		index: true`,
+		index: true
+
+model_input_table:
+	type: parquet
+	filepath: s3://bucket/models/input_table.parquet 
+	load_args:
+		header: true
+	save_args:
+		mode: overwrite`,
 
 		`# Templated Config
 
@@ -81,13 +89,22 @@ prm_disputes:
 	
 prm_users:
 	filepath: {{ bucket }}/prm/users.csv
-	<<: *_common_data`,
+	<<: *_common_data
+
+model_input_table:
+	type: parquet
+	filepath: {{ bucket }}/models/input_table.parquet 
+	load_args:
+		header: true
+	save_args:
+		mode: overwrite`,
 
 		`# Pattern Matching
 
 prm_{placeholder}:
 	type: pandas.CSVDataSet
 	filepath: {bucket}/prm/{placeholder}.csv
+	# filepath: s3://mybucket/prm/accounts.csv
 	load_args:
 		header: true
 	save_args:
@@ -96,6 +113,7 @@ prm_{placeholder}:
 model_{name}:
 	type: parquet
 	filepath: {bucket}/models/{name}.parquet
+	# filepath: s3://mybucket/models/input_table.parquet
 	load_args:
 		header: true
 	save_args:
@@ -107,7 +125,8 @@ model_{name}:
 
 prm_{{ placeholder }}:
 	type: pandas.CSVDataSet
-	filepath: {{ bucket }}/data/{{ prm }}.csv
+	filepath: {{ bucket }}/prm/{{ placeholder }}.csv
+	# filepath: s3://mybucket/prm/accounts.csv
 	load_args:
 		header: true
 	save_args:
@@ -117,7 +136,8 @@ prm_{{ placeholder }}:
 
 model_input_table:
 	type: parquet
-	filepath: {{ bucket }}/model/input_table.parquet
+	filepath: {{ bucket }}/models/input_table.parquet
+	# filepath: s3://mybucket/models/input_table.parquet
 	load_args:
 		header: true
 	save_args:
