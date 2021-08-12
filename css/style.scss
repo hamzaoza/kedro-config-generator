@@ -34,3 +34,12 @@ p {
 pre {
 	margin: 0 0 2rem 0;
 }
+
+.show {
+	transition: all 0.3s ease-in-out;
+	transform-origin: top left;
+}
+
+.option-0 {
+	opacity: 0.2;
+}

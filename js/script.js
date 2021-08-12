@@ -4,6 +4,7 @@
 	const catalog = document.querySelector(".code--catalog");
 	// const nodes = document.querySelector(".code--nodes");
 	const globals = document.querySelector(".code--globals");
+	const show = document.querySelector(".show");
 
 	const globalsEntries = [
 		`# Vanilla`,
@@ -131,6 +132,7 @@ model_input_table:
 
 	slider.addEventListener("input", function(event){
 		triggerChange();
+		show.classList = "show option-" + slider.value;
 		event.preventDefault();
 	});
 

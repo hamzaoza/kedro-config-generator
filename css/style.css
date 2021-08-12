@@ -240,7 +240,7 @@ pre[class*=language-].line-numbers > code {
   width: 3em;
   /* works for line-numbers below 1000 lines */
   letter-spacing: -1px;
-  border-right: 1px solid rgba(255, 255, 255, 0.35);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -294,4 +294,13 @@ p {
 
 pre {
   margin: 0 0 2rem 0;
+}
+
+.show {
+  transition: all 0.3s ease-in-out;
+  transform-origin: top left;
+}
+
+.option-0 {
+  opacity: 0.2;
 }
