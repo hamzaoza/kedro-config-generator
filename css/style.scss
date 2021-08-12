@@ -9,14 +9,14 @@ body {
 
 .page {
 	max-width: 80rem;
-	margin: 4rem auto;
+	margin: 1rem auto;
 }
 
 .wrapper {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	column-gap: 2rem;
-	margin-bottom: 2rem;
+	// margin-bottom: 2rem;
 }
 
 input {
@@ -25,11 +25,12 @@ input {
 	margin-left: 80%;
 }
 
+h1 {margin: 1rem 0;}
+
 p {
 	font-weight: bold;
-	margin-top: 2rem;
 }
 
 pre {
-	margin-bottom: 2rem;
+	margin: 0 0 2rem 0;
 }

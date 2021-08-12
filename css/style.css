@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* PrismJS 1.24.1
-https://prismjs.com/download.html#themes=prism-twilight&languages=python+yaml */
+https://prismjs.com/download.html#themes=prism-twilight&languages=python+yaml&plugins=line-numbers */
 /**
  * prism.js Twilight theme
  * Based (more or less) on the Twilight theme originally of Textmate fame.
@@ -11,7 +11,7 @@ pre[class*=language-] {
   color: white;
   background: none;
   font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
-  font-size: 1em;
+  font-size: 0.875rem;
   text-align: left;
   /* text-shadow: 0 -.1em .2em black; */
   white-space: pre-wrap;
@@ -37,9 +37,9 @@ pre[class*=language-],
 /* Code blocks */
 pre[class*=language-] {
   border-radius: 0.5em;
-  /* border: .3em solid hsl(0, 0%, 33%); /* #282A2B */
-  /* box-shadow: 1px 1px .5em black inset; */
-  margin: 0.5em 0;
+  /* border: .3em solid hsl(0, 0%, 33%);
+  box-shadow: 1px 1px .5em black inset;
+  margin: .5em 0; */
   overflow: auto;
   padding: 1em;
 }
@@ -220,6 +220,46 @@ pre[data-line] {
   top: auto;
 }
 
+pre[class*=language-].line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+}
+
+pre[class*=language-].line-numbers > code {
+  position: relative;
+  white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  font-size: 100%;
+  left: -3.8em;
+  width: 3em;
+  /* works for line-numbers below 1000 lines */
+  letter-spacing: -1px;
+  border-right: 1px solid #999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.line-numbers-rows > span {
+  display: block;
+  counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   line-height: 1.5;
@@ -229,14 +269,13 @@ body {
 
 .page {
   max-width: 80rem;
-  margin: 4rem auto;
+  margin: 1rem auto;
 }
 
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 2rem;
-  margin-bottom: 2rem;
 }
 
 input {
@@ -245,11 +284,14 @@ input {
   margin-left: 80%;
 }
 
+h1 {
+  margin: 1rem 0;
+}
+
 p {
   font-weight: bold;
-  margin-top: 2rem;
 }
 
 pre {
-  margin-bottom: 2rem;
+  margin: 0 0 2rem 0;
 }

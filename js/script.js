@@ -8,7 +8,9 @@
 	const globalsEntries = [
 		`# Vanilla`,
 
-		`# Templated Config`,
+		`# Templated Config
+
+bucket: s3://mybucket`,
 
 		`# Pattern Matching
 
@@ -64,19 +66,19 @@ _common_data: &_common_data
 		index: true
 
 data_accounts:
-	filepath: s3://bucket/data/accounts.csv
+	filepath: {{ bucket }}/data/accounts.csv
 	<<: *_common-data
 	
 data_calls:
-	filepath: s3://bucket/data/calls.csv
+	filepath: {{ bucket }}/data/calls.csv
 	<<: *_common-data
 
 data_disputes:
-	filepath: s3://bucket/data/disputes.csv
+	filepath: {{ bucket }}/data/disputes.csv
 	<<: *_common-data
 	
 data_users:
-	filepath: s3://bucket/data/users.csv
+	filepath: {{ bucket }}/data/users.csv
 	<<: *_common-data`,
 
 		`# Pattern Matching
