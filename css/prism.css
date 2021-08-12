@@ -7,7 +7,7 @@ https://prismjs.com/download.html#themes=prism-twilight&languages=python+yaml&pl
  */
 code[class*="language-"],
 pre[class*="language-"] {
-	color: white;
+	color: rgba(255,255,255, 0.85);
 	background: none;
 	font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
 	font-size: 0.875rem;
@@ -219,7 +219,7 @@ pre[class*="language-"].line-numbers > code {
 	left: -3.8em;
 	width: 3em; /* works for line-numbers below 1000 lines */
 	letter-spacing: -1px;
-	border-right: 1px solid #999;
+	border-right: 1px solid rgba(255,255,255, 0.35);
 
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -235,7 +235,7 @@ pre[class*="language-"].line-numbers > code {
 
 		.line-numbers-rows > span:before {
 			content: counter(linenumber);
-			color: #999;
+			color: rgba(255,255,255, 0.30);
 			display: block;
 			padding-right: 0.8em;
 			text-align: right;
