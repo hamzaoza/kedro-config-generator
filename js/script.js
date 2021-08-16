@@ -110,9 +110,9 @@ prm_{placeholder}:
 	save_args:
 		index: true
 
-model_{name}:
+model_{placeholder}:
 	type: parquet
-	filepath: {bucket}/models/{name}.parquet
+	filepath: {bucket}/models/{placeholder}.parquet
 	# filepath: s3://mybucket/models/input_table.parquet
 	load_args:
 		header: true
