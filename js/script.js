@@ -101,9 +101,9 @@ model_input_table:
 
 		`# Pattern Matching
 
-prm_{*placeholder}:
+prm_{%placeholder}:
 	type: pandas.CSVDataSet
-	filepath: {bucket}/prm/{*placeholder}.csv
+	filepath: {bucket}/prm/{%placeholder}.csv
 	# filepath: s3://mybucket/prm/users.csv
 	load_args:
 		header: true
@@ -118,9 +118,9 @@ prm_accounts:
 	save_args:
 		index: true
 
-model_{*placeholder}:
+model_{%placeholder}:
 	type: parquet
-	filepath: {bucket}/models/{*placeholder}.parquet
+	filepath: {bucket}/models/{%placeholder}.parquet
 	# filepath: s3://mybucket/models/input_table.parquet
 	load_args:
 		header: true
